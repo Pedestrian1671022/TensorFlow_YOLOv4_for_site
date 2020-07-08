@@ -29,9 +29,9 @@ score_thresh = 0.25     # 分类得分阈值
 # 学习率配置
 lr_init = 2e-4                      # 初始学习率	# 0.00261
 lr_lower =1e-6                  # 最低学习率    
-lr_type = 'constant'   # 学习率类型 'exponential', 'piecewise', 'constant'
-piecewise_boundaries = [1, 2]   # 单位:epoch, for piecewise
-piecewise_values = [2e-4, 1e-4, 1e-4]
+lr_type = 'piecewise'   # 学习率类型 'exponential', 'piecewise', 'constant'
+piecewise_boundaries = [i for i in range(290) if i>=100 and i%10==0]   # 单位:epoch, for piecewise
+piecewise_values = [2e-4*(0.8**((i-100)/10)) for i in range(300) if i>=100 and i%10==0]
 
 # 优化器配置
 optimizer_type = 'momentum' # 优化器类型
