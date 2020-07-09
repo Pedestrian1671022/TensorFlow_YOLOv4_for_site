@@ -91,10 +91,11 @@ def main():
             img_ori = tools.draw_img(img_ori, boxes, score, label, word_dict, color_table)
 
             cv2.imshow('img', img_ori)
-            cv2.waitKey(0)
 
             if config.save_img:
                 save_img(img_ori, name)
+            if cv2.waitKey() == 27:
+                break
 
 if __name__ == "__main__":
     log.add_log("message:进入 val.main() 函数")
